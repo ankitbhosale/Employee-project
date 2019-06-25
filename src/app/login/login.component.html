@@ -1,0 +1,38 @@
+<form novalidate [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div class="form-group col-md-20">
+        <div class="btn-toolbar">
+            <button type="button" routerLink="/register" class="btn btn-primary btn-float right">Register</button>
+        </div>
+    </div>
+    <div class="input-group form-group"
+        [ngClass]="{'has-error': employeeForm.get('email').errors && (employeeForm.get('email').touched || employeeForm.get('email').dirty)}">
+        <label for="inputEmail">Email</label>
+        <input formControlName="email" type="text" class="form-control" id="inputEmail" placeholder="Enter Email">
+        <span class="help-block"
+            *ngIf="employeeForm.get('email').errors && (employeeForm.get('email').touched || employeeForm.get('email').dirty)">
+            <small class="text-danger" *ngIf="employeeForm.get('email').errors">
+                Enter valid email id
+            </small>
+        </span>
+    </div>
+    <div class="input-group form-group"
+        [ngClass]="{'has-error': employeeForm.get('password').errors && (employeeForm.get('password').touched || employeeForm.get('password').dirty)}">
+        <label for="inputPassword">Password</label>
+        <input formControlName="password" type="password" class="form-control" id="inputPassword"
+            placeholder="Enter Password">
+        <span class="help-block"
+            *ngIf="employeeForm.get('password').errors && (employeeForm.get('password').touched || employeeForm.get('password').dirty)">
+            <small class="text-danger" *ngIf="employeeForm.get('password').errors">
+                Passsword required.
+            </small>
+        </span>
+    </div>
+    <div class="form-group col-md-10">
+        <div class="btn-toolbar">
+            <button type="submit" [disabled]="employeeForm.invalid" class="btn btn-primary">Login</button>
+        </div>
+    </div>
+    <div class="form-group col-md-10">
+        <span class="psw">Forgot <a href="#" routerLink="/reset">password?</a></span>
+      </div>
+</form>

@@ -1,0 +1,63 @@
+<form  novalidate [formGroup]="registration" (ngSubmit)="onSubmit()">
+ 
+  <div class="form-group col-md-6" [ngClass]="{'has-error': registration.get('firstName').errors && (registration.get('firstName').touched || registration.get('firstName').dirty)}">
+    <label for="inputFirstName">First Name</label>
+    <input formControlName="firstName" type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+    <span class= "help-block" *ngIf="registration.get('firstName').errors && (registration.get('firstName').touched || registration.get('firstName').dirty)">
+      <small class="text-danger" *ngIf="registration.get('firstName').errors">
+        First Name is Required
+      </small>
+    </span>
+  </div>
+ 
+  <div class="form-group col-md-6" [ngClass]="{'has-error': registration.get('lastName').errors && (registration.get('lastName').touched || registration.get('lastName').dirty)}">
+    <label for="inputLastName">Last Name</label>
+    <input formControlName="lastName" type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+    <span class= "help-block" *ngIf="registration.get('lastName').errors && (registration.get('lastName').touched || registration.get('lastName').dirty)">
+      <small class="text-danger" *ngIf="registration.get('lastName').errors">
+        Last Name is Required
+      </small>
+    </span>
+  </div>
+
+  <div class="form-group col-md-6" [ngClass]="{'has-error': registration.get('email').errors && (registration.get('email').touched || registration.get('email').dirty)}">
+    <label class="col-sm-2 control-label" for="inputEmail4">Email</label>
+    <input formControlName="email" type="text" class="form-control" ng-pattern="/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/" id="inputEmail" placeholder="Email">
+   
+   
+    <span class= "help-block" *ngIf="registration.get('email').errors && (registration.get('email').touched || registration.get('email').dirty || registration.get('email').hasError('pattern'))">
+      <small class="text-danger" *ngIf="registration.get('email').errors">
+        Enter valid email id
+      </small>
+    </span>
+  </div>
+
+  <div class="form-group col-md-6"[ngClass]="{'has-error': registration.get('mobile').errors && (registration.get('mobile').touched || registration.get('mobile').dirty)}">
+    <label class="control-label" for="inputMobie">Mobile</label>
+    <input  formControlName="mobile" type="tel" class="form-control" id="inputMobile" placeholder="Mobile">
+    <span class= "help-block" *ngIf="registration.get('mobile').errors && (registration.get('mobile').touched || registration.get('mobile').dirty)">
+      <small class="text-danger" *ngIf="registration.get('mobile').hasError('required')">
+        Mobile Number is Required
+      </small>
+      <small class="text-danger" *ngIf="registration.get('mobile').hasError('pattern')">
+        Mobile Number is not valid
+       </small>
+    </span>
+  </div>
+  <div class="form-group col-md-6" [ngClass]="{'has-error': registration.get('password').errors && (registration.get('password').touched || registration.get('password').dirty)}">
+    <label for="inputPassword">Password</label>
+    <input formControlName="password" type="password" class="form-control" id="inputFirstName" placeholder="Password">
+    <span class= "help-block" *ngIf="registration.get('password').errors && (registration.get('password').touched || registration.get('password').dirty)">
+      <small class="text-danger" *ngIf="registration.get('password').errors">
+       Password is Required
+      </small>
+    </span>
+  </div>
+  <div class="form-group col-md-10">
+    <div class="btn-toolbar">
+      <button type="submit" [disabled]="registration.invalid" class="btn btn-primary">Sign in</button>
+      </div>
+      </div>
+      
+
+  </form>

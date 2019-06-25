@@ -1,0 +1,59 @@
+<form novalidate [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <div class="form-group col-md-6"
+    [ngClass]="{'has-error': employeeForm.get('firstName').errors && (employeeForm.get('firstName').touched || employeeForm.get('firstName').dirty)}">
+    <label for="inputFirstName">First Name</label>
+    <input formControlName="firstName" type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+    <span class="help-block"
+      *ngIf="employeeForm.get('firstName').errors && (employeeForm.get('firstName').touched || employeeForm.get('firstName').dirty)">
+      <small class="text-danger" *ngIf="employeeForm.get('firstName').errors">
+        First Name is Required
+      </small>
+    </span>
+  </div>
+
+  <div class="form-group col-md-6"
+    [ngClass]="{'has-error': employeeForm.get('lastName').errors && (employeeForm.get('lastName').touched || employeeForm.get('lastName').dirty)}">
+    <label for="inputLastName">Last Name</label>
+    <input formControlName="lastName" type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+    <span class="help-block"
+      *ngIf="employeeForm.get('lastName').errors && (employeeForm.get('lastName').touched || employeeForm.get('lastName').dirty)">
+      <small class="text-danger" *ngIf="employeeForm.get('lastName').errors">
+        Last Name is Required
+      </small>
+    </span>
+  </div>
+
+  <div class="form-group col-md-6"
+    [ngClass]="{'has-error': employeeForm.get('email').errors && (employeeForm.get('email').touched || employeeForm.get('email').dirty)}">
+    <label class="col-sm-2 control-label" for="inputEmail4">Email</label>
+    <input formControlName="email" type="text" class="form-control" id="inputEmail" placeholder="Email">
+    <span class="help-block"
+      *ngIf="employeeForm.get('email').errors && (employeeForm.get('email').touched || employeeForm.get('email').dirty)">
+      <small class="text-danger" *ngIf="employeeForm.get('email').errors">
+        Enter valid email id
+      </small>
+    </span>
+  </div>
+
+  <div class="form-group col-md-6"
+    [ngClass]="{'has-error': employeeForm.get('mobile').errors && (employeeForm.get('mobile').touched || employeeForm.get('mobile').dirty)}">
+    <label class="control-label" for="inputMobie">Mobile</label>
+    <input formControlName="mobile" type="tel" class="form-control" id="inputMobile" placeholder="Mobile">
+    <span class="help-block"
+      *ngIf="employeeForm.get('mobile').errors && (employeeForm.get('mobile').touched || employeeForm.get('mobile').dirty)">
+      <small class="text-danger" *ngIf="employeeForm.get('mobile').hasError('required')">
+        Mobile Number is Required
+      </small>
+      <small class="text-danger" *ngIf="employeeForm.get('mobile').hasError('pattern')">
+        Mobile Number is not valid
+      </small>
+    </span>
+  </div>
+  <div class="form-group col-md-6">
+    <img [src]="imageUrl" style="width:120px;height:100px">
+    <input type="file" (change)="handleFileInput($event.target.files)" (change)="onFileSelected($event)">
+
+  </div>
+  <button type="submit" [disabled]="employeeForm.invalid" class="btn btn-primary">Sign in</button>
+
+</form>
