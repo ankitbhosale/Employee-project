@@ -22,7 +22,7 @@
     "@ng-bootstrap/ng-bootstrap": "^5.0.0-rc.0",
     "@toverux/ngx-sweetalert2": "^4.0.0",
     "@types/jquery": "^3.3.29",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "bootstrap": "^3.4.1",
     "bootstrap-sweetalert": "^1.0.1",
     "cors": "^2.8.5",
